@@ -33,7 +33,7 @@ class HomeViewModel: ObservableObject {
         let originalQuery = searchQuery.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
 
         let url = "https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=\(originalQuery)&ts=\(ts)&apikey=\(publicKey)&hash=\(hash)"
-        print("URL---",url)
+        print("Character URL---",url)
 
         let session = URLSession(configuration: .default)
 

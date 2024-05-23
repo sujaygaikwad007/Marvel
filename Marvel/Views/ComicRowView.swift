@@ -38,7 +38,6 @@ extension comicRowView {
     
     // Comic image
     private var comicImage: some View {
-        
         AsyncImage(url: URL(string: comic.thumbnailURL)) { phase in
             if let image = phase.image {
                 image.resizable()
@@ -46,6 +45,9 @@ extension comicRowView {
                     .frame(width: 150, height: 150)
                     .cornerRadius(8.0)
                     .padding(.vertical,10)
+                    .shadow(color: Color.black.opacity(0.06), radius: 5, x: 5, y: 5)
+                    .shadow(color: Color.black.opacity(0.06), radius: 5, x: -5, y: -5)
+                
             } else if phase.error != nil {
                 Color.red
                     .frame(width: 150, height: 150)
@@ -71,21 +73,13 @@ extension comicRowView {
 
     // Comic description
     private var comicDescription: some View {
-        
-        if let description = comic.description, !description.isEmpty {
-            return Text(description)
-                .font(.caption)
-                .foregroundColor(Color.gray)
-                .lineLimit(4)
-                .multilineTextAlignment(.leading)
-        } else {
-            return Text("No Description Available")
-                .font(.caption)
-                .foregroundColor(Color.gray)
-                .lineLimit(4)
-                .multilineTextAlignment(.leading)
-        }
+        Text(comic.description?.isEmpty == false ? comic.description! : "No Description Available")
+            .font(.caption)
+            .foregroundColor(Color.gray)
+            .lineLimit(4)
+            .multilineTextAlignment(.leading)
     }
+
 
     // Comic links
     private var comicLinks: some View {

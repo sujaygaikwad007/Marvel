@@ -27,7 +27,7 @@ struct CharactersView: View {
                     }
                     else{
                         ForEach(character){ data in
-                            characterRowView(character: data)
+                            CharacterRowView(character: data)
                             
                         }
                     }

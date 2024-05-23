@@ -8,6 +8,7 @@ struct Home: View {
         
         
         TabView{
+            
             CharactersView()
                 .tabItem {
                     Image(systemName: "person.3.fill")
